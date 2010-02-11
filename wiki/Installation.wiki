@@ -22,9 +22,8 @@ Install the following components:
     * Recommend the "Ruby 1.8.6 One-Click Installer"
   # ruby-opengl
       http://ruby-opengl.rubyforge.org/
-    * Click on Releases (under Downloads on the right side)
-    * Download "ruby-opengl-0.60.1-x86-mswin32.gem"
-    * Navigate to the folder you downloaded the .gem file to, and type:
+    * The precompiled .gem for Windows (win32) is included in the source
+    * Navigate to the 'lib folder' and type:
 {{{      
 gem install ruby-opengl-0.60.1-x86-mswin32.gem
 }}}

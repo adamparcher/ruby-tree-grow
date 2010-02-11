@@ -1,0 +1,55 @@
+#summary Method for drawing a Tree
+
+This is the current idea of how we're going to draw a Tree
+
+= Data Structures =
+
+A Tree is defined as a Trunk, with Branches coming off it.
+
+The Trunk is a series of points in 3D space. For instance, here is the Trunk a tree that grows straight up along the Y axis:
+pt: [0, 0, 0] <-- root
+pt: [0, 2, 0] 
+pt: [0, 5, 0]
+pt: [0, 6, 0]
+pt: [0, 9, 0] <-- tip of tree
+
+Each point also *optionally* has one or more Branches coming off it. Each Branch's initial point is the same as the Trunk point it is attached to, but of course the next point in the list will be shooting off in a separate direction. 
+
+Structurally, Branches are identical to the Trunk. Each Branch point can also have other Branches attached to it.
+
+Since the structures of Branch and Trunk are the same, this implies that the Trunk is just a unique name of a special sort of branch, which is attached to nothing at the bottom (root).
+
+Each Branch/Trunk has two special Points: the *root* and the *tip*. In the case of the Trunk, the *root* is not attached to anything (except the ground!). For Branches, the *root* Point is attached to another Branch or Trunk Point. The *tip* Point is special because it indicates where the Trunk/Branch ends.
+
+Except for *tip* Points, each Point has one additional piece of information -- *thickness*, which is a radius. The radius indicates the thickness of Trunk/Branch at that Point. It is up to the tree generation algorithm, but typically we can expect to see *thickness* decreasing as we move from the *root* to the *tip* of a Branch. Using the example from before, our Trunk pointing straight up might look like:
+pt: [0, 0, 0], thickness: 4.0 <-- root
+pt: [0, 2, 0], thickness: 2.9  
+pt: [0, 5, 0], thickness: 2.1 
+pt: [0, 6, 0], thickness: 1.0 
+pt: [0, 9, 0], thickness: 0.0  <-- tip of tree
+
+= Doing the Drawing =
+To actually draw each tree, we'll iterate through the Trunk and each Branch.
+
+* For each Branch/Trunk:
+  * Define C1 and C2 as Circles, with center coordinates X/Y/Z, a radius, and lie on a 3D plane defined by an 'up' vector
+  * For each Point P:
+    * If P is the root:
+      * Define P' as the next Point in the list
+      * Calculate a vector V by determining the direction from P to P'
+      * Set C2 to have center P.x/y/z, radius P.thickness, and on the 3D plane with 'up' being V
+      * Next Point
+    * If P is not the root or the tip:
+      * Set C1 = C2
+      * Calculate a vector V by determining the direction from P to P'
+      * Set C2 to have center P.coordinates, radius P.thickness, and on the 3D plane with 'up' being V
+      * Determine a set of points on C1 and C2 (should be the same number) and create a list of vertices, alternating between each circle. This list of vertices is used to draw a Triangle Strip (this is kind of vague)
+    * If P is the tip
+      * Determine a set of points on C2, and use them as vertices to draw a Triangle Fan, using P.coordinates as the base of the fan
+
+Assumptions: 
+- Branches will ALWAYS have at least 3 points
+
+= Helpful diagram showing Triangle Strip and Triangle Fan =
+
+[http://goanna.cs.rmit.edu.au/~gl/teaching/Interactive3D/2009/images/primitives.gif]

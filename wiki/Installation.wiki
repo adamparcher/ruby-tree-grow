@@ -27,3 +27,6 @@ Install the following components:
 {{{      
 gem install ruby-opengl-0.60.1-x86-mswin32.gem
 }}}
+
+The codebase also includes glut32.dll which was downloaded from here:
+http://www.xmission.com/~nate/glut.html

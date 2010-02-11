@@ -1,0 +1,30 @@
+#summary Installation procedures, including links to dependencies
+
+= Mac OS X =
+
+The only requirement is to install the ruby-opengl gem. This can be done by executing:
+{{{
+gem install ruby-opengl 
+}}}
+
+
+= Windows =
+
+Windows is a little bit tougher since it does not come with a lot of the software needed.
+
+Install the following components:
+  # Subversion command-line client (to be able to checkout code)
+      http://www.open.collab.net/downloads/subversion/
+    * Download and Install "!CollabNet Subversion Command-Line Client v1.6.9 (for Windows)"
+    * You have to register, but you can choose to not receive emails
+  # Ruby
+      http://www.ruby-lang.org/en/downloads/
+    * Recommend the "Ruby 1.8.6 One-Click Installer"
+  # ruby-opengl
+      http://ruby-opengl.rubyforge.org/
+    * Click on Releases (under Downloads on the right side)
+    * Download "ruby-opengl-0.60.1-x86-mswin32.gem"
+    * Navigate to the folder you downloaded the .gem file to, and type:
+{{{      
+gem install ruby-opengl-0.60.1-x86-mswin32.gem
+}}}

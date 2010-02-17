@@ -1,0 +1,19 @@
+#summary Algorithm considerations and description for building trees
+#labels Featured
+
+= First Considerations =
+
+
+The key to tree construction is that each branch has a location, size and direction that is somewhat predictable, yet fully unique.  
+
+Each type of tree has a characteristic pattern. Let's say for example that the typical maple tree has it's first branches about eight feet from the ground, but you also find some as low as six or as high as ten.  On approach to model this is to define the distance to the first branch as 6 feet +/- some random percentage of 2 feet.  In other words,  D(average) [a constant] + D(random) [-100% to +100%] X D(variation) [a constant that defines the amount of variability in distance between branches].  
+
+The same approach can be used for the direction of a branch.  The primary branches (off the trunk) of a Douglas fir are nearly horizontal and radiating from the center of the trunk, while the direction taken by branches of an oak tree can be quite variable.  So, again this can be defined as a constant (representing the average) + a random part.
+
+Size of branches tend to be less random.  The smallest (newest) branch shoots on a tree are quite uniform in size.  It may be possible to simply define the size of each "order" of branch (trunk, primary, secondary, tertiary, etc.) as a fixed percentage of the branch from which it grew.   
+
+The number of "orders" of branches is obviously finite.  In most trees one would find four orders.  For ease of design, the leaves could be considered a sixth "branch" (obviously with a different shape).
+
+It is noteworthy that branches of a higher "order" have a much greater variation in direction.  The trunk is nearly always straight up, while the smallest branches may extend in almost any direction presumably in an effort to receive sunlight.
+
+Finally, since this program deals with multiple trees the location of each tree can either be a pattern (like an orchard) or random.  In the random model, there must be consideration for a realistic space between trees and the avoidance of two trunks or branches occupying the same space.  

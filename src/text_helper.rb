@@ -17,8 +17,22 @@ class TextHelper
 		
 		# Draw the text
 		if @displayHelpText
-			GL.RasterPos2d(0,5)
-			"This is to help you".each_byte { |x| GLUT.BitmapCharacter(GLUT_BITMAP_9_BY_15, x) }
+			helpText =[
+				"ESC - exit",
+				"N - zoom out",
+				"M - zoom in",
+				"W/S - rotate up/down",
+				"A/D - rotate left/right",
+				"G - toggle plane grid display",
+				"Press 'H' to hide Help"
+			]
+			rasterX = 5
+			rasterY = 5
+			helpText.reverse.each { |text|
+				GL.RasterPos2d(rasterX, rasterY)
+				text.each_byte { |x| GLUT.BitmapCharacter(GLUT_BITMAP_9_BY_15, x) }
+				rasterY += 20
+			}
 		else
 			GL.RasterPos2d(0,5)
 			"Press 'H' to display Help".each_byte { |x| GLUT.BitmapCharacter(GLUT_BITMAP_9_BY_15, x) }

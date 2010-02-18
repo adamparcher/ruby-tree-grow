@@ -58,5 +58,10 @@ class TestPoint < Test::Unit::TestCase
 		point1.z = 7.8
 		assert_equal(point1, point2)
 	end
+	
+	# A Point can have 0 to many Branch objects attached to it
+	def testAddBranch
+		# fail()
+	end
 end
 

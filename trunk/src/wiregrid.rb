@@ -3,6 +3,7 @@ include Gl,Glu,Glut
 
 # WireGrid class draws a non-lighted wiregrid on each of the
 # three planes XY, XZ, YZ.
+# TODO: this needs a Test class
 class WireGrid
 	attr_reader :gridOn
 
@@ -21,6 +22,7 @@ class WireGrid
 	# using @gridSpacing as the amount of space to leave in between each line
 	# Length of lines is calculated as width of grid = @gridLines * @gridSpacing * 2
 	def drawXYGrid
+		if !@gridOn then return end
 		glDisable(GL_LIGHTING)
 		glBegin(GL_LINES)
 		glColor(@gridColorXY)
@@ -37,6 +39,7 @@ class WireGrid
 
 	# Draw grid on XZ plane
 	def drawXZGrid
+		if !@gridOn then return end
 		glDisable(GL_LIGHTING)
 		glBegin(GL_LINES)
 		glColor(@gridColorXZ)
@@ -53,6 +56,7 @@ class WireGrid
 
 	# Draw grid on YZ plane
 	def drawYZGrid
+		if !@gridOn then return end
 		glDisable(GL_LIGHTING)
 		glBegin(GL_LINES)
 		glColor(@gridColorYZ)
@@ -69,8 +73,14 @@ class WireGrid
 
 	# Shortcut for drawing all grids
 	def drawAll
+		if !@gridOn then return end
 		self.drawXYGrid
 		self.drawXZGrid
 		self.drawYZGrid
+	end
+	
+	# Toggle whether to display the grid or not
+	def toggle
+		@gridOn = !@gridOn
 	end
 end

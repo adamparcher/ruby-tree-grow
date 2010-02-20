@@ -1,5 +1,6 @@
 require 'test/unit'
 require 'point'
+require 'branch'
      
 class TestPoint < Test::Unit::TestCase
 	# def setup
@@ -13,6 +14,7 @@ class TestPoint < Test::Unit::TestCase
 		assert_equal(0.0, point.x)
 		assert_equal(0.0, point.y)
 		assert_equal(0.0, point.z)
+		assert_nil(point.branch)
 	end
 	
 	def testNewPoint
@@ -61,7 +63,21 @@ class TestPoint < Test::Unit::TestCase
 	
 	# A Point can have 0 to many Branch objects attached to it
 	def testAddBranch
-		# fail()
+		point = Point.new
+		assert_nil(point.branch)
+		branch = Branch.new
+		branch.addPoint(Point.new.build([0.0, 0.0, 0.0]))
+		branch.addPoint(Point.new.build([1.0, -0.2, 0.1]))
+		branch.addPoint(Point.new.build([1.5, -0.5, 0.5]))
+		branch.addPoint(Point.new.build([3.5, -0.7, 0.5]))
+		point.branch = branch
+		assert_equal(branch, point.branch)
+	end
+	
+	
+	def testAsArray
+		point = Point.new.build([1.2, 4.5, 7.8])
+		assert_equal([1.2, 4.5, 7.8], point.as_array)
 	end
 end
 

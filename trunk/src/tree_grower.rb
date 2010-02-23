@@ -3,6 +3,7 @@ require 'opengl'
 require 'tree'
 require 'wiregrid'
 require 'text_helper'
+require 'array_helper'
 include Gl,Glu,Glut
 
 $light_diffuse0 = [1.0, 0.0, 1.0, 1.0]
@@ -36,6 +37,41 @@ $windowHeight = 500.0
 $wiregrid = WireGrid.new
 $textHelper = TextHelper.new
 
+
+
+
+# Set up the tree to draw
+$tree1 = YAML::load_file "./sample_trees/simple_fir.tree"
+#$tree1 = Tree.new
+#
+#			[0.0, 0.0, 0.0],
+#			[0.0, 2.0, 0.0],
+#			[-1.0, 4.0, 0.0],
+#			[-1.2, 6.0, 0.0],
+#			# Vertices for branch at Pt [2]
+#			[0.0, 0.0, 0.0],
+#			[1.0, -0.2, 0.1],
+#			[1.5, -0.5, 0.5],
+#			[3.5, -0.7, 0.5]
+#		]
+#	
+#		$tree1 = Tree.new
+#		$tree1.trunk.addPoint(Point.new.build(pointArr[0]))
+#		$tree1.trunk.addPoint(Point.new.build(pointArr[1]))
+#		$tree1.trunk.addPoint(Point.new.build(pointArr[2]))
+#		# add a branch at this point
+#		branch = Branch.new
+#		branch.addPoint(Point.new.build(pointArr[4]))
+#		branch.addPoint(Point.new.build(pointArr[5]))
+#		branch.addPoint(Point.new.build(pointArr[6]))
+#		branch.addPoint(Point.new.build(pointArr[7]))
+#		$tree1.trunk.tip.branch = branch
+#		$tree1.trunk.addPoint(Point.new.build(pointArr[3]))
+
+$tree1.drawMethod = Tree::LINES
+$tree1.calculateLines
+
+
 def drawBox
 	for i in (0..5)
 		GL.Begin(GL_QUADS)
@@ -47,6 +83,12 @@ def drawBox
 		GL.End()
 	end
 end
+
+
+def drawTree
+	$tree1.draw
+end
+
 
 redraw = Proc.new do
 end
@@ -89,8 +131,9 @@ display = Proc.new do
 	# Draw the Help text
 	$textHelper.drawAll
 	
-	# Draw a Box
-	drawBox
+	# Draw some stuff!
+	#drawBox
+	drawTree
 		
 	# Finally swap the zbuffer and display the scene!
 	GLUT.SwapBuffers

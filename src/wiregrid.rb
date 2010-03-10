@@ -13,7 +13,7 @@ class WireGrid
 		@gridColorXY = [1.0, 1.0, 0.0, 0.0] #Yellow
 		@gridColorYZ = [0.0, 0.0, 1.0, 0.0] #Blue
 		@gridLines = 10  # The number of lines in HALF the grid (just to make counting easier)
-		@gridSpacing = 1.0
+		@gridSpacing = 5.0
 		@gridOn = true
 	end
 

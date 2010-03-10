@@ -2,7 +2,7 @@ require 'point'
 require 'branch'
 
 class Tree
-	attr_accessor :trunk, :vertices, :drawMethod
+	attr_accessor :trunk, :vertices, :drawMethod, :x, :y, :z
 	
 	# Different methods of drawing the tree
 	LINES = "LINES"    # draw lines along just the main points of the branches
@@ -13,6 +13,9 @@ class Tree
 		@trunk = Branch.new
 		@drawMethod = TRIANGLES
 		@treeColor = [1.0, 1.0, 1.0, 1.0]
+		@x = 0.0
+		@y = 0.0
+		@z = 0.0
 	end
 	
 	def calculateLines
@@ -22,14 +25,20 @@ class Tree
 	def draw
 		case (@drawMethod)
 			when LINES			# Draw some lines
-				glDisable(GL_LIGHTING)   # lines get no lighting
-				glBegin(GL_LINES)
-				glColor(@treeColor)
+				GL.Disable(GL_LIGHTING)   # lines get no lighting
+				#GL.PushMatrix
+				#GL.LoadIdentity
+				GL.PushMatrix
+				GL.Translate(@x, @y, @z)
+				GL.Begin(GL_LINES)
+				GL.Color(@treeColor)
 				@vertices.each { |v|    # Assume vertices have been calculated for lines
-					glVertex( v[0], v[1], v[2])
+					GL.Vertex( v[0], v[1], v[2])
 				}
-				glEnd
-				glEnable(GL_LIGHTING)
+				GL.End
+				#GL.PopMatrix
+				GL.PopMatrix
+				GL.Enable(GL_LIGHTING)
 			when WIREFRAME
 				puts "WIREFRAME: unimplemented"
 			when TRIANGLES

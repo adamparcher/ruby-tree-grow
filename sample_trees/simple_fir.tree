@@ -1,0 +1,133 @@
+--- !ruby/object:Tree 
+drawMethod: LINES
+treeColor: 
+- 1.0
+- 1.0
+- 1.0
+- 1.0
+trunk: !ruby/object:Branch 
+  points: 
+  - !ruby/object:Point 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  - !ruby/object:Point 
+    x: 0.0
+    y: 1.0
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: 1.0
+        y: 0.0
+        z: 0.0
+    x: 0.0
+    y: 2.0
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 1.0
+    x: 0.0
+    y: 2.1
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: -1.0
+        y: 0.0
+        z: 0.0
+    x: 0.0
+    y: 2.2
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: -1.0
+    x: 0.0
+    y: 2.3
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: 0.5
+        y: 0.0
+        z: 0.0
+    x: 0.0
+    y: 4.0
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: -0.5
+        y: 0.0
+        z: 0.0
+    x: 0.0
+    y: 4.1
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.5
+    x: 0.0
+    y: 4.2
+    z: 0.0
+  - !ruby/object:Point 
+    branch: !ruby/object:Branch 
+      points: 
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      - !ruby/object:Point 
+        x: 0.0
+        y: 0.0
+        z: -0.5
+    x: 0.0
+    y: 4.3
+    z: 0.0
+  - !ruby/object:Point 
+    x: 0.0
+    y: 6.0
+    z: 0.0

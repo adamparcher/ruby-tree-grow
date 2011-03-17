@@ -23,7 +23,7 @@ Install the following components:
   # ruby-opengl
       http://ruby-opengl.rubyforge.org/
     * The precompiled .gem for Windows (win32) is included in the source
-    * Navigate to the 'lib folder' and type:
+    * Navigate to the 'lib' of the ruby-tree-grow source code and type:
 {{{      
 gem install ruby-opengl-0.60.1-x86-mswin32.gem
 }}}

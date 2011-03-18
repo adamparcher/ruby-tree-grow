@@ -4,6 +4,7 @@ require 'tree'
 require 'wiregrid'
 require 'text_helper'
 require 'array_helper'
+require 'yaml'
 # require all tree builders
 Dir[File.dirname(__FILE__) + '/tree_builder_*.rb'].each { |tree_builder| 
 	require tree_builder
@@ -92,17 +93,17 @@ def setupTree
 	# Build 4 trees spaces around the 'ground'
 	$trees = []
 	t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
-	t.x = 30.0
+	t.x = 0.0
 	$trees.push t
-	t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
-	t.z = 30.0
-	$trees.push t
-	t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
-	t.z = -30.0
-	$trees.push t
-	t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
-	t.x = -30.0
-	$trees.push t
+	#t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
+	#t.z = 30.0
+	#$trees.push t
+	#t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
+	#t.z = -30.0
+	#$trees.push t
+	#t = TreeBuilderRandomXYZ.buildTree(numberPoints, trunkXVarRange, trunkYVarRange, trunkZVarRange, chanceOfBranch, degenerateFactor)
+	#t.x = -30.0
+	#$trees.push t
 	
 	$trees.each { |t| 
 		t.drawMethod = Tree::LINES
@@ -122,7 +123,9 @@ reshape = Proc.new do |w, h|
 	puts "reshaping, width=#{w}, height=#{h}"
 	$windowWidth = w*1.0    # convert to float
 	$windowHeight = h*1.0   # convert to float
+	puts "DEBUG: windowWidth=#{$windowWidth}, windowHeight=#{$windowHeight}"
 	# Set the view perspective
+	GL.Viewport(0.0, 0.0, $windowWidth, $windowHeight)
 	GL.MatrixMode(GL_PROJECTION)
 	GL.LoadIdentity()
 	GLU.Perspective(60.0, $windowWidth/$windowHeight, 1.0,  200.0)

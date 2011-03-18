@@ -24,6 +24,7 @@ class TextHelper
 				"W/S - rotate up/down",
 				"A/D - rotate left/right",
 				"G - toggle plane grid display",
+				"T - recreate tree(s)",
 				"Press 'H' to hide Help"
 			]
 			rasterX = 5
